@@ -1,0 +1,41 @@
+<mat-form-field appearance="fill">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<mat-table class="mat-elevation-z3" [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="index">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+    <mat-cell *matCellDef="let record; let i = index">{{ i + 1 }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name1">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      Name 1
+    </mat-header-cell>
+    <mat-cell *matCellDef="let record">
+      {{ record.node1.name }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name2">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      Name 2
+    </mat-header-cell>
+    <mat-cell *matCellDef="let record">
+      {{ record.node2.name }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row not-found" *matNoDataRow>
+    <td class="mat-cel" colspan="4">
+      No data found!
+    </td>
+  </tr>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[1, 2, 4]" [pageSize]="4" aria-label="Select page of users"></mat-paginator>

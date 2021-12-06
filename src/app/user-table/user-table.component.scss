@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  max-width: 70vw;
+}
+
+.heading {
+  justify-content: space-between;
+}
+
+.heading,
+.not-found {
+  display: flex;
+  align-items: center;
+}
+
+.not-found {
+  padding: 1rem;
+}
